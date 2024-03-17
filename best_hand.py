@@ -35,16 +35,15 @@ def DealTableCards(Deck):
     table = []
 
     if Deck:
-        print('Pre-pop: ',Deck)
         Deck.pop(0)
-        print('Post-pop: ',Deck)
-        while table.count(table) < 3:
+        while len(table) < 3:
             table.append(Deck.pop(0))
-        while table.count(table) < 5:
+            print(table)    
+        while len(table) < 5:
             Deck.pop(0)
             table.append(Deck.pop(0))
+    return table
 
-    print(table)
 
 #ASK PLAYER TO GUESS WHICH HAND WILL WIN UNDER A TIME
 
