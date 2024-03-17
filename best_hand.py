@@ -18,7 +18,6 @@ def CreateDeck():
             card_key = suit +' '+ card
             Deck.append(card_key)
     random.shuffle(Deck)
-    random.shuffle(Deck)
     return Deck
 
 def DealHands (Deck : list,Players : int):
@@ -32,9 +31,25 @@ def DealHands (Deck : list,Players : int):
     return hands
 
 #DISPLAY FLOP(3),TURN(1),and RIVER(1). REMOVE ONE CARD BEFORE EACH
+def DealTableCards(Deck):
+    table = []
+
+    if Deck:
+        print('Pre-pop: ',Deck)
+        Deck.pop(0)
+        print('Post-pop: ',Deck)
+        while table.count(table) < 3:
+            table.append(Deck.pop(0))
+        while table.count(table) < 5:
+            Deck.pop(0)
+            table.append(Deck.pop(0))
+
+    print(table)
 
 #ASK PLAYER TO GUESS WHICH HAND WILL WIN UNDER A TIME
 
 #CREATE FUNCTION TO ADD TABLE CARDS TO EACH PLAYER CARD AND FIND WINNER
-
-print(DealHands(CreateDeck(),playerInput))
+gameDeck = CreateDeck()
+DealHands(gameDeck ,playerInput)
+print('Deck:', gameDeck)
+print('Table:', DealTableCards(gameDeck))
