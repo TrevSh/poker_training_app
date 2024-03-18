@@ -44,11 +44,12 @@ def DealTableCards(Deck):
             table.append(Deck.pop(0))
     return table
 
+gameDeck = CreateDeck()
+playerHands = DealHands(gameDeck ,playerInput)
 
 #ASK PLAYER TO GUESS WHICH HAND WILL WIN UNDER A TIME
-
+handDescriptions = [f"Player {i+1} hand: {' , '.join(hand)}" for i, hand in enumerate(playerHands)]
+pi.inputMenu(handDescriptions, numbered=True)
 #CREATE FUNCTION TO ADD TABLE CARDS TO EACH PLAYER CARD AND FIND WINNER
-gameDeck = CreateDeck()
-DealHands(gameDeck ,playerInput)
 print('Deck:', gameDeck)
 print('Table:', DealTableCards(gameDeck))
